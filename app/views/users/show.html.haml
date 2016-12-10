@@ -1,0 +1,86 @@
+.body_user_page
+.row
+  .col-md-4
+    .user_logo
+      - if @user.avatar.present?
+        = image_tag(@user.avatar_url)
+      - else
+        = image_tag ("default_picture.png")
+  .col-md-4
+    .user_page_name
+      %h4.user_name
+        = @user.full_name
+    .user_page_info
+      - if @user.profession.present?
+        %p Profession: #{@user.profession}
+
+      - if @user.email.present?
+        %p Email: #{@user.email}
+
+      - if @user.facebook_link.present?
+        %p Facebook link: #{@user.facebook_link}
+
+      - if @user.vk_link.present?
+        %p Vk link: #{@user.vk_link}
+
+      - if @user.google_link.present?
+        %p Google link: #{@user.google_link}
+
+      - if @user.phone_number.present?
+        %p Phone number: #{@user.phone_number}
+
+  .col-md-4
+    .questions
+      %h4 Ask a question:
+      = simple_form_for @question do |f|
+        %p
+          %b
+            - if user_signed_in?
+              = f.text_field :user_name, value: current_user.full_name
+              = f.hidden_field :sender_id, value: current_user.id
+              = f.hidden_field :receiver_id, value: @user.id
+            - else
+              = f.text_field :user_name, placeholder: "Your name"
+        %p
+          %br
+            = f.text_field :email, placeholder: "Email Address"
+            = f.error_notification message: "Email can't be blank."
+        %p
+          %br
+            = f.text_area :body, placeholder: "Type your question here..."
+        %p
+          = f.submit "Send"
+
+.row
+  .col-md-12
+  - if @user.about.present?
+    %p.about About:
+    .about
+      = @user.about
+
+.feedbacks
+  %h4 Feedbacks:
+  - @user.received_feedbacks.each do |feedback|
+    %p
+      %strong User name:
+      = feedback.sender.full_name
+    %p
+      %strong Feedback:
+      = feedback.body
+  %h4 Add a feedback:
+  = simple_form_for(@feedback) do |f|
+    %p
+      %strong User name
+      %br
+        = f.text_field :user_name
+        = f.hidden_field :receiver_id, value: @user.id
+        = f.hidden_field :sender_id, value: current_user.id
+    %p
+      = f.label :body
+      %br
+        = f.text_area :body
+    %p
+      = f.submit
+  = link_to 'Edit', edit_user_path(@user)
+  |
+  \#{link_to 'Back', users_path}

@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @product.title
+%p
+  %b Description:
+  = @product.description.html_safe
+%p
+  %b Amount:
+  = @product.amount
+%p
+  %b User:
+  = @product.user.full_name
+%p
+  %b Picture:
+  .product_picture
+  = image_tag(@product.picture.url) if @product.picture.present?
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

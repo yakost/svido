@@ -1,0 +1,16 @@
+%h1 Listing users
+%table
+  %thead
+    %tr
+      %th ID
+      %th Email
+      %th Admin
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.email
+        %td= user.admin
+        %td= link_to 'Delete user', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Product', new_admin_post_path

@@ -1,0 +1,15 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title Адміністрування
+    = render 'layouts/admin/header'
+  %body
+    #wrapper
+      = render 'layouts/admin/navbar'
+      = render 'layouts/admin/sidebar'
+      #page-wrapper
+        = render 'layouts/admin/messages'
+        = yield
+        / /.row
+      / /#page-wrapper
+    / /#wrapper

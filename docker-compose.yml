@@ -1,0 +1,14 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.4.5
+    
+  web:
+    build: .
+    command: bundle exec rails s -p 3001 -b '0.0.0.0'
+    volumes:
+      - .:/svido
+    ports:
+      - "3001:3001"
+    links:
+      - db

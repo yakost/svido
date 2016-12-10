@@ -1,0 +1,15 @@
+hr, hr.sign_up {
+ border-top: 1px solid #8c8b8b;
+ text-align: center;
+}
+hr.sign_up:after {
+
+ content: 'or';
+ display: inline-block;
+ position: relative;
+ top: -11px;
+ padding: 0 10px;
+ background: white;
+ color: black;
+ font-size: 14px;
+}

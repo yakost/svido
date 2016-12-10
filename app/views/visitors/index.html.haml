@@ -1,0 +1,41 @@
+.row
+  #welcome_pic=image_tag("welcome_pic.jpg")
+  .col-sm-4.col-sm-offset-4
+    #imaginary_container
+      .input-group.stylish-input-group
+        %input.form-control{:placeholder => "Пошук", :type => "text"}
+          %span.input-group-addon
+            %button{:type => "submit"}
+              %span.glyphicon.glyphicon-search
+%br
+.container-fluid.text-center
+  %h3 ОСТАННІ ОГОЛОШЕННЯ
+  %br
+    .row
+      - @products.each do |product|
+        .col-sm-3
+          = link_to product do
+            %div
+              = image_tag(product.picture.present? ? product.picture.url : "http://placehold.it/150x80?text=IMAGE")
+            %h4= product.title
+%br
+%br
+.container-fluid.text-center
+  %h3 ПРО НАС
+  %br
+    .row.about-text
+      .col-sm-4
+        %h4 Про СВІДО
+        %p
+          Свій до свого по своє (СВІДО) — це християнський благодійний проект спільноти Віднови у Святому Дусі «Благословення», УГКЦ, який покликаний реалізувати декілька важливих завдань...
+          %a{:href => "#"} Більше
+      .col-sm-4
+        %h4 Благодійна і євангелізаційна діяльність
+        %p
+          Сьогодні без болю в серці неможливо читати статистику, яка висвітлює рівень наркоманії, алкоголізму, корупції, розпусти, бандитизму, абортів, насилля,…
+          %a{:href => "#"} Більше
+      .col-sm-4
+        %h4 Інформація для покупців
+        %p
+          Дорогі покупці Свідо, ми щиро раді вітати Вас на першій в Україні християнській платформі для співпраці, яка діє на основі принципу «свій до свого по своє»...
+          %a{:href => "#"} Більше

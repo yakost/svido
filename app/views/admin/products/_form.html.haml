@@ -1,0 +1,12 @@
+= simple_form_for [:admin, @product], :html=>{:multipart => true} do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.cktext_area :description
+    = f.input :amount
+    = f.file_field :picture
+    = f.hidden_field :user_id, :value => current_user.id
+
+  .form-actions
+    = f.button :submit

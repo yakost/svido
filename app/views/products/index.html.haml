@@ -1,0 +1,26 @@
+%h1 Listing products
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Amount
+      %th Picture
+      %th
+      %th
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.title
+        %td= product.description.html_safe
+        %td= product.amount
+        %td= image_tag(product.picture.url, :width=>100) if product.picture.present?
+        %td= link_to 'Show', product
+        %td= link_to 'Edit', edit_product_path(product)
+        %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Product', new_product_path

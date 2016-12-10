@@ -1,0 +1,34 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.th-btn {
+ text-align: center;
+}
+.article_image_small {
+ padding-bottom: 15px;
+}
+.article_image_small img{
+ width: 300px;
+}
+.avatar img{
+ width: 200px;
+}
+.comments_line{
+ margin: 5px;
+}
+.comments_count {
+ display: inline-block;
+ width: 150px;
+}
+.comments_btn {
+ display: inline-block;
+}
+.enable{
+ color:green;
+}
+.disable{
+ color:red;
+}
+.center{
+ text-align: center;
+}

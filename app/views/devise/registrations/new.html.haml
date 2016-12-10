@@ -1,0 +1,46 @@
+.container-fluid.text-center
+  .row
+    .container
+      .col-sm-4.col-sm-offset-4
+        .panel.panel-default
+          .panet-title
+            %h2 Sign UP
+          .panel-body
+            = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :action=>"create", :html => { :role => 'form'}) do |f|
+              = render 'layouts/errors_messages_signup', object: f.object
+              .form-group
+                = link_to "Sign up with Facebook", user_facebook_omniauth_authorize_path,:method => :get, :class => 'btn-lg btn-primary btn-block'
+                = link_to "Sign up with Google", user_omniauth_authorize_path(:google_oauth2), :method => :get , :class => 'btn-lg btn-danger btn-block'
+              %hr.sign_up
+              .form-group
+                .input-group
+                  %span.input-group-addon
+                    %i.fa.fa-angle-right
+                  = f.text_field :first_name, :autofocus => true, class: 'form-control', placeholder: 'First Name'
+              .form-group
+                .input-group
+                  %span.input-group-addon
+                    %i.fa.fa-angle-right
+                  = f.text_field :last_name, class: 'form-control', placeholder: 'Last Name'
+              .form-group
+                .input-group
+                  %span.input-group-addon
+                    %i.fa.fa-angle-right
+                  = f.email_field :email, class: 'form-control', placeholder: 'Email Address'
+              .form-group.text-left
+                .input-group
+                  %span.input-group-addon
+                    %i.fa.fa-angle-right
+                  = f.password_field :password, class: 'form-control', id: 'password',placeholder: 'Password', autocomplete: "off"
+              .form-group.text-left
+                .input-group
+                  %span.input-group-addon
+                    %i.fa.fa-angle-right
+                  = f.password_field :password_confirmation, class: 'form-control', id: 'password',placeholder: 'Password confirmation', autocomplete: "off"
+              .text-center
+                = f.submit 'Sign up', :class => 'btn-block btn-lg btn-success'
+              %hr
+              .text-left
+                - if devise_mapping.registerable?
+                  %b Already a member of Svido?
+                  = link_to 'Sign in', session_path(resource_name), class: 'pull-right'

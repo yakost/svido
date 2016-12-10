@@ -1,0 +1,52 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "font-awesome";
+
+ .body_user_page {
+   margin-top: 50px;
+ }
+
+ h4.user_name {
+   font-size: 24px;
+   font-family: Verdana, sans-serif;
+ }
+
+ .user_logo {
+   width: 200px;
+   margin-left: 120px;
+   margin-top: 13px;
+ }
+
+ .user_page_name {
+   margin-left: -30px;
+ }
+
+ .user_page_info {
+   margin-left: -30px;
+ }
+
+ .about {
+  margin-left: 85px;
+  margin-top: 30px;
+}
+
+.feedbacks {
+  margin-left: 70px;
+}
+
+.img-responsive {
+  width: 100%;
+  }
